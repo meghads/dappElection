@@ -5,6 +5,15 @@ App = {
   hasVoted: false,
 
   init: function() {
+    $("#voterIdForm").on("submit", function(event) {
+      event.preventDefault();
+      const voterId = $("#voterIdInput").val().trim();
+      if (voterId) {
+        App.validateVoter(voterId);
+      } else {
+        alert("Please enter a valid Voter ID.");
+      }
+    });
     return App.initWeb3();
   },
 
