@@ -8,6 +8,7 @@
   <link href="css/styles.css" rel="stylesheet">
 </head>
 <body>
+  <!-- Voter ID Section -->
   <div id="voterIdSection" style="display: block; text-align: center; margin-top: 100px;">
     <h1 class="text-center">Welcome to DemocraChain</h1>
     <h4 class="text-center">Enter Voter ID</h4>
@@ -17,6 +18,7 @@
     </form>
   </div>
 
+  <!-- Voting Interface Section -->
   <div id="votingInterface" style="display: none;">
     <div class="container" style="width: 650px; margin-top: 50px;">
       <h1 class="text-center">Voting</h1>
@@ -24,6 +26,7 @@
         <p class="text-center">Loading...</p>
       </div>
       <div id="content" style="display: none;">
+        <!-- Voting Results Table -->
         <table class="table table-striped table-hover">
           <thead>
             <tr>
@@ -34,6 +37,8 @@
           </thead>
           <tbody id="candidatesResults"></tbody>
         </table>
+
+        <!-- Vote Casting Form -->
         <form onsubmit="App.castVote(); return false;">
           <div class="form-group">
             <label for="candidatesSelect">Select Candidate</label>
@@ -41,17 +46,27 @@
           </div>
           <button type="submit" class="btn btn-primary">Vote</button>
         </form>
+
+        <!-- Voter Account Info -->
         <p id="accountAddress" class="text-center"></p>
       </div>
     </div>
   </div>
 
+  <!-- Already Voted Message -->
+  <div id="alreadyVoted" style="display: none; text-align: center; margin-top: 20px;">
+    <h3>You have already voted!</h3>
+  </div>
+
+  <!-- Scripts -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
   <script src="js/web3.min.js"></script>
   <script src="js/truffle-contract.js"></script>
   <script src="js/app.js"></script>
+
   <script>
     $(document).ready(function () {
+      // Handle Voter ID Form submission
       $('#voterIDForm').on('submit', function (e) {
         e.preventDefault();
         const voterId = $('#voterIdInput').val();
