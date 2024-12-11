@@ -1,0 +1,103 @@
+/* General Styling */
+body {
+    background-color: #f4f7f6;
+    font-family: 'Arial', sans-serif;
+  }
+  
+  h1 {
+    font-size: 2.5em;
+    color: #2c3e50;
+    margin-bottom: 30px;
+    font-weight: bold;
+  }
+  
+  hr {
+    border-top: 2px solid #3498db;
+    margin: 20px 0;
+  }
+  
+  /* Loader styling */
+  #loader {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 200px;
+  }
+  
+  #loader p {
+    font-size: 1.5em;
+    color: #3498db;
+  }
+  
+  /* Content Area */
+  #content {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+  }
+  
+  /* Table Styling */
+  table {
+    margin-top: 20px;
+    border-collapse: collapse;
+    width: 100%;
+  }
+  
+  th, td {
+    padding: 12px;
+    text-align: center;
+  }
+  
+  th {
+    background-color: #3498db;
+    color: #fff;
+  }
+  
+  tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+  
+  tr:hover {
+    background-color: #dfe6e9;
+    cursor: pointer;
+  }
+  
+  /* Form Styling */
+  form {
+    margin-top: 30px;
+  }
+  
+  .form-group label {
+    font-weight: bold;
+    font-size: 1.1em;
+    color: #2c3e50;
+  }
+  
+  .form-control {
+    border-radius: 5px;
+    border: 1px solid #3498db;
+    padding: 10px;
+    font-size: 1.2em;
+    color: #2c3e50;
+  }
+  
+  /* Button Styling */
+  .btn-primary {
+    background-color: #3498db;
+    border: 1px solid #3498db;
+    padding: 12px 25px;
+    font-size: 1.2em;
+    border-radius: 5px;
+  }
+  
+  .btn-primary:hover {
+    background-color: #2980b9;
+    border-color: #2980b9;
+  }
+  
+  #accountAddress {
+    font-size: 1.1em;
+    color: #7f8c8d;
+  }
+  
