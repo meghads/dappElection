@@ -5,15 +5,18 @@ App = {
   hasVoted: false,
 
   init: function() {
+    // Handle Voter ID Form submission
     $("#voterIdForm").on("submit", function(event) {
       event.preventDefault();
       const voterId = $("#voterIdInput").val().trim();
       if (voterId) {
+        localStorage.setItem('voterId', voterId); // Store voter ID locally
         App.validateVoter(voterId);
       } else {
         alert("Please enter a valid Voter ID.");
       }
     });
+
     return App.initWeb3();
   },
 
@@ -32,7 +35,6 @@ App = {
     $.getJSON("Election.json", function(election) {
       App.contracts.Election = TruffleContract(election);
       App.contracts.Election.setProvider(App.web3Provider);
-
       App.listenForEvents();
       return App.render();
     });
@@ -45,7 +47,7 @@ App = {
         toBlock: 'latest'
       }).on('data', function(event) {
         console.log("Event triggered:", event);
-        App.render();
+        App.render(); // Re-render the page when the vote is cast
       }).on('error', function(error) {
         console.error("Error in event listener:", error);
       });
@@ -94,6 +96,10 @@ App = {
     }).then(function(hasVoted) {
       if (hasVoted) {
         $('form').hide();
+        $("#alreadyVoted").show();
+      } else {
+        $('#alreadyVoted').hide();
+        $('form').show();
       }
       loader.hide();
       content.show();
@@ -107,8 +113,10 @@ App = {
     App.contracts.Election.deployed().then(function(instance) {
       return instance.vote(candidateId, { from: App.account });
     }).then(function(result) {
+      // After vote is cast, update UI dynamically
       $("#content").hide();
       $("#loader").show();
+      App.render(); // Re-render the UI after vote is cast
     }).catch(function(err) {
       console.error(err);
     });
