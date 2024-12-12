@@ -1,7 +1,7 @@
 /* General Styling */
 body {
   background-color: #f4f7f6;
-  font-family: 'Arial', sans-serif;
+  font-family: 'Times New Roman', sans-serif;
 }
 
 h1 {
@@ -10,10 +10,126 @@ h1 {
   margin-bottom: 30px;
   font-weight: bold;
 }
+/* General Section Styling */
+.section {
+  padding: 50px 0;
+}
 
-hr {
-  border-top: 2px solid #3498db;
-  margin: 20px 0;
+/* Navbar Styling */
+.navbar {
+  padding: 15px 0; /* Adjust padding for the navbar */
+  background: linear-gradient(45deg, #007bff, #0056b3); /* Gradient background */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  display: flex;
+  justify-content: space-between; /* Space between the brand and nav items */
+  align-items: center; /* Center items vertically */
+  position: relative;
+}
+
+.navbar .container {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  align-items: center;
+}
+
+/* Navbar Brand */
+.navbar-brand {
+  font-size: 1.8rem; /* Increase brand font size */
+  font-weight: bold;
+  color: #ffffff; /* Brand color */
+  margin-left: 0; /* Remove left margin */
+  text-align: left;
+}
+
+.navbar-brand:hover {
+  color: #ffdf7e;
+}
+
+/* Navbar Items */
+.navbar-nav {
+  display: flex; /* Flex layout for nav items */
+  justify-content: flex-end; /* Align items to the right */
+  align-items: center; /* Center nav items vertically */
+  gap: 30px; /* Space between each nav item */
+  list-style: none; /* Remove default list styling */
+  margin: 0; /* Remove default margin */
+  padding: 0; /* Remove default padding */
+}
+
+/* Navbar Item */
+.navbar-nav .nav-item {
+  text-align: center; /* Center text within items */
+}
+
+/* Navbar Links */
+.navbar-nav .nav-item .nav-link {
+  color: #ffffff; /* Link color */
+  font-size: 1.5rem; /* Font size for links */
+  font-weight: 500; /* Slightly bold font */
+  padding: 10px 15px; /* Add padding around links */
+  border-radius: 5px; /* Rounded edges */
+  transition: color 0.3s ease, background-color 0.3s ease; /* Smooth transition */
+}
+
+.navbar-nav .nav-item .nav-link:hover {
+  color: #ffdf7e; /* Change color on hover */
+  background-color: rgba(255, 255, 255, 0.2); /* Subtle hover background */
+  text-decoration: none; /* Remove underline on hover */
+}
+
+/* Active Link Styling */
+.navbar-nav .nav-item .nav-link.active {
+  color: #ffdf7e; /* Active link color */
+  font-weight: bold; /* Bold active link */
+  text-decoration: none;
+}
+
+/* Sections */
+#register, #voting {
+  padding: 20px;
+  border-radius: 10px;
+  background-color: #f9f9f9;
+  margin: 20px auto;
+  max-width: 800px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  display: flex;
+  justify-content: flex-end;
+}
+
+
+
+/* Form Styling */
+#voterIdInput, #candidatesSelect {
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 9px;
+  border-radius: 5px;
+  border: 1px solid #3498db;
+  font-size: 0.95em;
+  color: #2c3e50;
+  display: block;
+  font-weight: 450;
+}
+
+#voterIDForm .btn-primary,
+form .btn-primary {
+  display: block;
+  margin: 20px auto;
+  background: linear-gradient(45deg, #007bff, #0056b3);
+  padding: 10px 20px;
+  font-size: 1em;
+  border-radius: 5px;
+  font-weight: bold;
+}
+
+#voterIDForm .btn-primary:hover,
+form .btn-primary:hover {
+  background: linear-gradient(45deg, #007bff, #0056b3);
+  cursor: pointer;
+  color: #ffdf7e;
+  font-weight: bold;
 }
 
 /* Loader Styling */
@@ -26,15 +142,7 @@ hr {
 
 #loader p {
   font-size: 1.5em;
-  color: #3498db;
-}
-
-/* Content Area */
-#content {
-  background-color: #fff;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  padding: 30px;
+  color: linear-gradient(45deg, #007bff, #0056b3);
 }
 
 /* Table Styling */
@@ -42,6 +150,7 @@ table {
   margin-top: 20px;
   border-collapse: collapse;
   width: 100%;
+  font-weight: bold;
 }
 
 th, td {
@@ -50,8 +159,8 @@ th, td {
 }
 
 th {
-  background-color: #3498db;
-  color: #fff;
+  background: linear-gradient(45deg, #007bff, #0056b3);
+  color: white;
 }
 
 tr:nth-child(even) {
@@ -63,62 +172,6 @@ tr:hover {
   cursor: pointer;
 }
 
-/* Form Styling */
-form {
-  margin-top: 30px;
-  text-align: center;
-}
-
-#voterIdInput {
-  width: 100%;
-  max-width: 400px;
-  margin: 0 auto;
-  padding: 10px;
-  border-radius: 5px;
-  border: 1px solid #3498db;
-  font-size: 1em;
-  color: #2c3e50;
-  display: block;
-}
-
-#voterIDForm .btn-primary {
-  display: block;
-  margin: 20px auto 0 auto;
-  background-color: #3498db;
-  border: 1px solid #3498db;
-  padding: 10px 20px;
-  font-size: 1em;
-  border-radius: 5px;
-}
-
-#voterIDForm .btn-primary:hover {
-  background-color: green;
-}
-
-/* Voting Interface Styling */
-#candidatesSelect {
-  width: 100%;
-  padding: 9.5px;
-  border-radius: 5px;
-  border: 1px solid #3498db;
-  font-size: 1em;
-  color: #2c3e50;
-}
-
-form .btn-primary {
-  display: block;
-  margin: 20px auto 20px auto;
-  background-color: #3498db;
-  border: 1px solid #3498db;
-  padding: 10px 20px;
-  font-size: 1em;
-  border-radius: 5px;
-}
-
-form .btn-primary:hover {
-  background-color: green;
-}
-
 #accountAddress {
   font-size: 1.25em;
   color: #111212;
@@ -127,3 +180,5 @@ form .btn-primary:hover {
 .text-center {
   text-align: center;
 }
+
+
