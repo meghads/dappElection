@@ -1,6 +1,6 @@
 /* General Styling */
 body {
-  background-color: #f4f7f6;
+  background-color: #d8dddb;
   font-family: 'Times New Roman', sans-serif;
 }
 
@@ -24,6 +24,7 @@ h1 {
   justify-content: space-between; /* Space between the brand and nav items */
   align-items: center; /* Center items vertically */
   position: relative;
+  text-decoration: none;
 }
 
 .navbar .container {
@@ -86,7 +87,7 @@ h1 {
 }
 
 /* Sections */
-#register, #voting {
+#home, #register, #voting {
   padding: 20px;
   border-radius: 10px;
   background-color: #f9f9f9;
@@ -97,7 +98,24 @@ h1 {
   justify-content: flex-end;
 }
 
+#idForm {
+  margin: 0 auto;
+}
 
+#idType,
+#idInput {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #3498db;
+  border-radius: 5px;
+  font-size: 1rem;
+  color: #2c3e50;
+}
+
+#idInput::placeholder {
+  color: #aaa;
+}
 
 /* Form Styling */
 #voterIdInput, #candidatesSelect {
