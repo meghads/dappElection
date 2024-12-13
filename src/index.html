@@ -56,13 +56,13 @@
   <ol style="text-align: left; max-width: 800px; margin: 20px auto; font-size: 1.75rem; color: #34495e; line-height: 1.6;">
     <li><strong>Register:</strong> To start, users need to register by entering their unique Voter ID. This is a one-time process to ensure that only legitimate voters participate in the election.</li>
     <li><strong>Vote Casting:</strong> After registration, voters can select their preferred candidate from a list of verified candidates. Each vote is recorded on the blockchain, ensuring security and transparency.</li>
-    <li><strong>Secure Transactions:</strong> Once a vote is cast, it is added to the blockchain, making it immutable. The voter’s choice is securely stored, and no one can alter the results.</li>
+    <li><strong>Secure Transactions:</strong> Once a vote is cast, it is added to the blockchain, making it immutable. The voter's choice is securely stored, and no one can alter the results.</li>
     <li><strong>Results:</strong> After the voting period ends, the results are automatically tallied, and the winner is announced. Since everything is on the blockchain, the results are verifiable by anyone, ensuring trust and credibility.</li>
   </ol>
 
   <h2 style="margin-top: 40px; font-size: 2.5rem; color: #2980b9;">Why Choose DemocraChain?</h2>
   <p style="font-size: 1.75rem; max-width: 800px; margin: 20px auto; color: #34495e; line-height: 1.6;">
-    DemocraChain offers a more secure, transparent, and efficient way of conducting elections, whether it’s for local elections, student body elections, or any other voting event. Here’s why you should choose DemocraChain:
+    DemocraChain offers a more secure, transparent, and efficient way of conducting elections, whether it's for local elections, student body elections, or any other voting event. Here’s why you should choose DemocraChain:
   </p>
   <ul style="text-align: left; max-width: 800px; margin: 20px auto; font-size: 1.75rem; color: #34495e; line-height: 1.6;">
     <li><strong>Fair Elections:</strong> No more voter fraud or ballot manipulation. Blockchain ensures that all votes are counted as they are cast, with no way for anyone to change the results.</li>
@@ -73,7 +73,7 @@
 
   <h2 style="margin-top: 40px; font-size: 2.5rem; color: #2980b9;">Join DemocraChain Today!</h2>
   <p style="font-size: 1.75rem; max-width: 800px; margin: 20px auto; color: #34495e; line-height: 1.6;">
-    Embrace the future of voting with DemocraChain. Whether you’re a voter, candidate, or organizer, our platform ensures a smooth and secure experience. Get started by registering today!
+    Embrace the future of voting with DemocraChain. Whether you're a voter, candidate, or organizer, our platform ensures a smooth and secure experience. Get started by registering today!
   </p>
 </div>
 
@@ -81,9 +81,13 @@
 
   <!-- Voter ID Section -->
   <div id="register" style="display: none; text-align: center; margin-top: 100px;">
-    <h1>REGISTER</h1>
-    <form id="voterIDForm">
-      <input type="text" id="voterIdInput" placeholder="Enter your Voter ID" required>
+    <h1 style="font-weight: bold; color: #0056b3;">REGISTRATION</h1>
+    <form id="idForm">
+      <select id="idType" style="margin-bottom: 10px; padding: 5px; font-size: 16px;">
+        <option value="voterId">Voter ID</option>
+        <option value="aadhaar">Aadhaar</option>
+      </select>
+      <input type="text" id="idInput" placeholder="Enter your ID" required style="display: block; margin: 10px auto;">
       <button type="submit" class="btn btn-primary" style="margin-bottom: 20px;">REGISTER</button>
     </form>
   </div>
@@ -91,7 +95,7 @@
   <!-- Voting Interface Section -->
   <div id="voting" style="display: none;">
     <div class="container" style="width: 650px; margin-top: 50px;">
-      <h1 class="text-center">VOTING POLL</h1>
+      <h1 class="text-center" style="font-weight: bold; color: #0056b3;">VOTING POLL</h1>
       <div id="loader">
         <p class="text-center">Loading...</p>
       </div>
@@ -123,8 +127,8 @@
     </div>
   </div>
     <!-- Already Voted Message -->
-    <div id="alreadyVoted" style="display: none; text-align: center; margin: 35px; font-weight: 900;">
-      <h3 style="color: #2980b9;">You have already voted!</h3>
+    <div id="alreadyVoted" style="display: none; text-align: center; margin: 35px;">
+      <h3 style="color: #007bff; font-weight: 900;">YOU HAVE ALREADY VOTED!</h3>
     </div>
 
   <!-- Scripts -->
@@ -140,21 +144,28 @@
         document.getElementById(sec).style.display = sec === section ? 'block' : 'none';
       });
     }
-
+  
     $(document).ready(function () {
-      // Handle Voter ID Form submission
-      $('#voterIDForm').on('submit', function (e) {
+      // Handle ID Form submission
+      $('#idForm').on('submit', function (e) {
         e.preventDefault();
-        const voterId = $('#voterIdInput').val();
-        if (voterId) {
-          localStorage.setItem('voterId', voterId); // Store voter ID locally
+        const idType = $('#idType').val(); // Get selected ID type (Voter ID or Aadhaar)
+        const idValue = $('#idInput').val().trim(); // Get entered ID value
+        
+        if (idType === 'voterId' && /^[A-Z0-9]{10}$/.test(idValue)) {
+          localStorage.setItem('voterId', idValue); // Store Voter ID locally
+          navigateTo('voting'); // Navigate to voting section
+          App.init(); // Initialize the voting application
+        } else if (idType === 'aadhaar' && /^\d{12}$/.test(idValue)) {
+          localStorage.setItem('aadhaar', idValue); // Store Aadhaar number locally
           navigateTo('voting'); // Navigate to voting section
           App.init(); // Initialize the voting application
         } else {
-          alert('Please enter a valid Voter ID.');
+          alert(`Please enter a valid ${idType === 'voterId' ? 'Voter ID' : 'Aadhaar Number'}.`);
         }
       });
     });
   </script>
+  
 </body>
 </html>
